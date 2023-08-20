@@ -7,7 +7,7 @@ import { LoginService } from 'src/app/services/pages/login.service';
 })
 export class HeaderComponent {
   constructor(private loginSvc: LoginService){}
-
+  username:string = localStorage.getItem('username') as string;
 onLogout(): void{
 this.loginSvc.logout()
 }

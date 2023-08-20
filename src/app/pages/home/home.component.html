@@ -1,1 +1,21 @@
-<button type="button" ngbAutofocus class="btn btn-danger">Ok</button>
+<h1>Su Administrador de Ventas!</h1>
+<div *ngIf="checkToken() == false">
+    <h2>Haga Click en Log in para ingresar</h2>
+    <button *ngIf="checkToken() == false" class="btn btn-outline-success "  [routerLink]="'login'">Login</button>
+</div>
+<div *ngIf="checkToken() == true">
+    <h2 class="text-center">Bienvenido/a, {{username}}</h2>
+    <h4 class="text-center">Categorías disponibles</h4>
+    <ul class="text-center list-unstyled">
+        <li [routerLink]="'rubros'">
+            Rubros
+        </li>
+        <li [routerLink]="'productos'">
+            Productos
+        </li>
+        <li [routerLink]="'clientes'">
+            Clientes
+        </li>
+    </ul>
+    <h4 class="text-center">Registrar Ventas</h4>
+</div>

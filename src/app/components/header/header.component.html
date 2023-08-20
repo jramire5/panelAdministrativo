@@ -1,7 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="nav-item" [routerLink]="''" >Home</a>
-          <a *ngIf="checkToken() == false" class="nav-item"  [routerLink]="'login'">Log in</a>
-            <button *ngIf="checkToken() == true" class="nav-item" (click)="onLogout()">Logout</button>
-            <a *ngIf="checkToken() == true" class="nav-item"  [routerLink]="'rubros'">Rubros</a>
-
+  <button class="btn btn-outline-primary mx-3" [routerLink]="''" >Home</button>
+  <div class="container-md">
+    <ul class="collapse navbar-collapse">
+      <p *ngIf="checkToken() == true">Bienvenido/a, {{username}}   </p>
+      <button *ngIf="checkToken() == false" class="btn btn-outline-success mx-4"  [routerLink]="'login'">Login</button>
+      <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'rubros'">Rubros</button>
+      <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'productos'">Productos</button>
+      <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'clientes'">Clientes</button>
+    </ul>
+    <button *ngIf="checkToken() == true" class="btn btn-outline-danger mx-5" (click)="onLogout()">Logout</button>
+    <div *ngIf="checkToken() == false" class="input-group container-sm">
+      <div class="input-group-prepend">
+        <div class="input-group-text" id="btnGroupAddon2">Search</div>
+      </div>
+      <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+    </div>
+    </div>
 </nav>

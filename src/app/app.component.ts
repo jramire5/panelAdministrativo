@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Products } from './models/products';
+import { Productos } from './models/productos';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

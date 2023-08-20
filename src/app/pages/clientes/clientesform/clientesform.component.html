@@ -1,0 +1,49 @@
+<app-clientes></app-clientes>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Agregar Cliente
+</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="addForm" >
+        <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                        <input type="text"
+                        formControlName="nombre"
+                        class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword5" class="form-label">Cuit</label>
+                        <input type="text"
+                        formControlName="cuit"
+                        class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword5" class="form-label">email</label>
+                        <input type="text"
+                        formControlName="email"
+                        class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword5" class="form-label">Domicilio</label>
+                        <input type="text"
+                        formControlName="domicilio"
+                        class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword5" class="form-label">Telefono</label>
+                        <input type="number"
+                        formControlName="telefono"
+                        class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
+                </div>
+        </form>
+      </div>
+    </div>
+  </div>

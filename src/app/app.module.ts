@@ -11,9 +11,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { RubrosComponent } from './pages/rubros/rubros.component';
 import { AddFormComponent } from './pages/rubros/add-form/add-form.component';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { AddProductosComponent } from './pages/productos/add-form/add-form.component';
+import { ClientesComponent } from './pages/clientes/clientes.component';
+import { AddClientesComponent } from './pages/clientes/clientesform/clientesform.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +24,13 @@ import { AddFormComponent } from './pages/rubros/add-form/add-form.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    ProductsComponent,
     RubrosComponent,
-    AddFormComponent
+    AddFormComponent,
+    ProductosComponent,
+    AddProductosComponent,
+    ClientesComponent,
+    AddClientesComponent
+    
   ],
   imports: [
     BrowserModule,

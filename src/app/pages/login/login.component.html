@@ -1,8 +1,8 @@
 <p>Log In</p>
-<div class="bg-secondary container-fluid">
-    <form [formGroup]="loginForm" >
+<div class=" row g-3 align-items-center container-md">
+    <form [formGroup]="loginForm" class="w-25 text-bg-light rounded" >
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
             <input type="text"
             formControlName="username"
             class="form-control"  placeholder="username" required />
@@ -13,6 +13,6 @@
             formControlName="password"
             id="inputPassword5" class="form-control" />
         </div>
-        <button (click)="onLogin()" type="submit">Log In</button>
+        <button (click)="onLogin()" type="submit" class="btn btn-outline-success">Log In</button>
     </form>
 </div>

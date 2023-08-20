@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent {
+  username = localStorage.getItem('username');
+  public checkToken(): boolean{
+    const userToken = localStorage.getItem('ATO');
+    if(userToken){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

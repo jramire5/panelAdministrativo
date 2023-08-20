@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import { RubroResponse, Rubros } from 'src/app/models/rubros';
+import { Rubros } from 'src/app/models/rubros';
 import { RubrosService } from 'src/app/services/pages/rubros/rubros.service';
 @Component({
   selector: 'app-rubros',

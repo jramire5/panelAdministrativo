@@ -1,7 +1,7 @@
-export interface Atributes {
+export interface Clientes {
     nombre: string;
     cuit: string;
-    email?: string;
+    email: string;
     domicilio?: string;
     telefono?: string;
 }
