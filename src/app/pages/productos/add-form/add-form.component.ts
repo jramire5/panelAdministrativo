@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Productos } from 'src/app/models/productos';
 import { ProductosService } from 'src/app/services/pages/productos/productos.service';
@@ -11,9 +11,9 @@ import { ProductosService } from 'src/app/services/pages/productos/productos.ser
 })
 export class AddProductosComponent {
   addForm = this.fb.group({
-    nombre:[''],
-    codigo:[''],
-    precio:[0],
+    nombre:['', [Validators.required]],
+    codigo:['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
+    precio:[0, [Validators.required]],
     RUBRO_ID:['']
   })
   constructor(private router: Router, private productosService: ProductosService, private fb: FormBuilder){}

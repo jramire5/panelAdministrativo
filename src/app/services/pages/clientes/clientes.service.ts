@@ -8,19 +8,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ClientesService {
-ato = localStorage.getItem('ato') as string;
+ato = localStorage.getItem('ATO') as string;
   constructor(private http:HttpClient) { }
   create(clientesData:Clientes): Observable<Clientes | void>{
-    const headers = new HttpHeaders({'Authorization':this.ato})
-    return this.http.post<Clientes>(`${environment.api_URL}/productos`, {nombre: clientesData.nombre, cuit: clientesData.cuit, domicilio: clientesData.domicilio, telefono: clientesData?.telefono},{headers}).pipe(
+    const headers = new HttpHeaders({'authorization':this.ato})
+
+    return this.http.post<Clientes>(`${environment.api_URL}/clientes`, {nombre: clientesData.nombre, cuit: clientesData.cuit, domicilio: clientesData?.domicilio, telefono: clientesData?.telefono},{headers}).pipe(
       map((res: Clientes) => {
-        console.log('Producto', res)
+        console.log('Clientes', res)
       }),
       catchError((err) => this.handleError(err))
       )
     }
   getClientes(): Observable<Clientes[] | any>{
-    const headers = new HttpHeaders({'Authorization':this.ato})
+    const headers = new HttpHeaders({'authorization':this.ato})
     return this.http.get<Clientes[]>(`${environment.api_URL}/clientes`,{headers})
     }
     private handleError(err: HttpErrorResponse): Observable<never> {

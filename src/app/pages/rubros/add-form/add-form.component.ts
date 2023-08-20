@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Productos } from 'src/app/models/productos';
 import { RubrosService } from 'src/app/services/pages/rubros/rubros.service';
 
 @Component({

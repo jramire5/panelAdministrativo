@@ -17,6 +17,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { AddProductosComponent } from './pages/productos/add-form/add-form.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { AddClientesComponent } from './pages/clientes/clientesform/clientesform.component';
+import { VentasComponent } from './pages/ventas/ventas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { AddClientesComponent } from './pages/clientes/clientesform/clientesform
     ProductosComponent,
     AddProductosComponent,
     ClientesComponent,
-    AddClientesComponent
+    AddClientesComponent,
+    VentasComponent
     
   ],
   imports: [
