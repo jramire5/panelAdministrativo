@@ -1,0 +1,18 @@
+<p>Lista de Rubros</p>
+<a class="nav-item"  [routerLink]="'rubros/crear'">+</a>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Codigo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rubro of rubros">
+        <th scope="row">{{rubro.nombre}}</th>
+        <td>{{rubro.codigo}}</td>
+        <td>Eliminar</td>
+      </tr>
+    </tbody>
+  </table>
