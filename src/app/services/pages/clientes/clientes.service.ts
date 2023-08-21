@@ -20,6 +20,15 @@ ato = localStorage.getItem('ATO') as string;
       catchError((err) => this.handleError(err))
       )
     }
+    delete(clienteID:number): Observable<Clientes | void>{
+      const headers = new HttpHeaders({'authorization':this.ato})
+      return this.http.post<Clientes>(`${environment.api_URL}/clientes/eliminar`,{id: clienteID},{headers}).pipe(
+        map((res: Clientes) => {
+          console.log('Rubro', res)
+        }),
+        catchError((err) => this.handleError(err))
+        )
+      }
   getClientes(): Observable<Clientes[] | any>{
     const headers = new HttpHeaders({'authorization':this.ato})
     return this.http.get<Clientes[]>(`${environment.api_URL}/clientes`,{headers})

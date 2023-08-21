@@ -19,4 +19,16 @@ export class ClientesComponent implements OnInit {
     })
     console.log(this.clientes)
     }
+    delete(clienteID?: number): void{
+      console.log(clienteID)
+      const id = clienteID as number;
+      if(confirm('¿Quiere eliminar este Cliente?')){
+
+      this.clientesService.delete(id).subscribe(
+        (res) => {this.clientesService.getClientes().subscribe(
+          response => this.clientes = response.data
+        )}
+      )
+      }}
+
   }

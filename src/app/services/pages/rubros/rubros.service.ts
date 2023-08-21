@@ -21,6 +21,15 @@ ato = localStorage.getItem('ATO') as string;
       catchError((err) => this.handleError(err))
       )
     }
+    delete(rubroID:number): Observable<Rubros | void>{
+      const headers = new HttpHeaders({'authorization':this.ato})
+      return this.http.post<Rubros>(`${environment.api_URL}/rubros/eliminar`,{id: rubroID},{headers}).pipe(
+        map((res: Rubros) => {
+          console.log('Rubro', res)
+        }),
+        catchError((err) => this.handleError(err))
+        )
+      }
     getRubros(): Observable<Rubros[] | any>{
     const headers = new HttpHeaders({'Authorization':this.ato})
     return this.http.get<Rubros[]>(`${environment.api_URL}/rubros`,{headers})

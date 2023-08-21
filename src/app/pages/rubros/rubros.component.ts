@@ -18,4 +18,13 @@ export class RubrosComponent implements OnInit {
       console.log(this.rubros);
     })
     }
+    delete(productoID?: number): void{
+      console.log(productoID)
+      const id = productoID as number;
+      this.rubrosService.delete(id).subscribe(
+        (res) => {this.rubrosService.getRubros().subscribe(
+          response => this.rubros = response.data
+        )}
+      )
+      }
   }

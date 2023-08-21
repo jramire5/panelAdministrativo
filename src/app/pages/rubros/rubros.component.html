@@ -11,7 +11,7 @@
       <tr *ngFor="let rubro of rubros">
         <th scope="row">{{rubro.nombre}}</th>
         <td>{{rubro.codigo}}</td>
-        <td>Eliminar</td>
+        <td><button class="btn btn-danger" (click)="delete(rubro.id)">Eliminar</button></td>
       </tr>
     </tbody>
   </table>

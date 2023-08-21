@@ -18,7 +18,6 @@ export class AddProductosComponent {
   })
   constructor(private router: Router, private productosService: ProductosService, private fb: FormBuilder){}
   onCreate(): void{
-    console.log('entered productos')
     const formValue = this.addForm.value;
     console.log('formValue', formValue)
     const createData = {
@@ -27,10 +26,13 @@ export class AddProductosComponent {
       precio: formValue.precio as number,
       RUBRO_ID: formValue.RUBRO_ID as number | undefined
     }
-    this.productosService.create(createData).subscribe( (res) =>
-    {
-    console.log('created', res)
-    this.router.navigate([''])
-  })
+    if(confirm('Confirme la creación')){
+
+      this.productosService.create(createData).subscribe( (res) =>
+      {
+        console.log('created', res)
+      })
+    }
   }
+
 }

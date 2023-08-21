@@ -1,6 +1,7 @@
 export interface Rubros {
     nombre: string;
     codigo: string;
+    id?: number;
 }
 export interface RubroResponse {
     nombre: string;

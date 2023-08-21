@@ -3,4 +3,5 @@ export interface Productos {
     codigo: string;
     precio: number;
     RUBRO_ID?: number;
+    id?: number;
 }

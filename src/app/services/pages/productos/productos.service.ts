@@ -21,6 +21,15 @@ export class ProductosService {
           catchError((err) => this.handleError(err))
           )
         }
+        delete(productoID:number): Observable<Productos | void>{
+          const headers = new HttpHeaders({'authorization':this.ato})
+          return this.http.post<Productos>(`${environment.api_URL}/productos/eliminar`,{id: productoID},{headers}).pipe(
+            map((res: Productos) => {
+              console.log('Producto', res)
+            }),
+            catchError((err) => this.handleError(err))
+            )
+          }
         getProductos(): Observable<Productos[] | any>{
         const headers = new HttpHeaders({'Authorization':this.ato})
         return this.http.get<Productos[]>(`${environment.api_URL}/productos`,{headers})

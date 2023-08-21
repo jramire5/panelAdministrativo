@@ -6,6 +6,7 @@
         <th scope="col">Codigo</th>
         <th scope="col">Precio</th>
         <th scope="col">Codigo de Rubro</th>
+        <th scope="col"></th>
 
       </tr>
     </thead>
@@ -15,9 +16,7 @@
         <td>{{producto.codigo}}</td>
         <td>${{producto.precio}}</td>
         <td>{{producto.RUBRO_ID}}</td>
-
-
-        <td>Eliminar</td>
+        <td><button class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button></td>
       </tr>
     </tbody>
   </table>

@@ -18,4 +18,15 @@ export class ProductosComponent implements OnInit {
       console.log(this.productos);
     })
     }
-  }
+    delete(productoID?: number): void{
+      console.log(productoID)
+      const id = productoID as number;
+      if(confirm('Quiere eliminar este producto?')){
+
+      this.productosService.delete(id).subscribe(
+        (res) => {this.productosService.getProductos().subscribe(
+          response => this.productos = response.data
+        )}
+      )
+      }}
+    }

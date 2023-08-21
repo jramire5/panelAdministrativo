@@ -4,4 +4,5 @@ export interface Clientes {
     email: string;
     domicilio?: string;
     telefono?: string;
+    id?: number;
 }
