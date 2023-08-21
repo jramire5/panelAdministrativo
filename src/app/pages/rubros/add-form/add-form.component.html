@@ -1,13 +1,15 @@
 <p>Rubros</p>
 <app-rubros></app-rubros>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Rubro
+    <p *ngIf="!editar">Agregar Rubro</p>
+    <p *ngIf="editar">Editar Rubro</p>
 </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Rubro</h5>
+          <h5 class="modal-title" *ngIf="editar" id="exampleModalLabel">Editar Rubro</h5>
+          <h5 class="modal-title" *ngIf="!editar" id="exampleModalLabel">Agregar Rubro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form [formGroup]="addForm" >
@@ -24,7 +26,9 @@
                         formControlName="codigo"
                         id="inputPassword5" class="form-control" />
                     </div>
-                    <button class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
+                    <button class="btn btn-primary" *ngIf="!editar" (click)="onCreate()" type="submit">Agregar</button>
+                    <button class="btn btn-primary" *ngIf="editar" (click)="onEdit()" type="submit">Editar</button>
+
                 </div>
         </form>
       </div>

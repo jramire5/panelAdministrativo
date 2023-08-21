@@ -5,12 +5,16 @@
         <th scope="col">Nombre</th>
         <th scope="col">Codigo</th>
         <th scope="col"></th>
+        <th scope="col"></th>
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let rubro of rubros">
         <th scope="row">{{rubro.nombre}}</th>
         <td>{{rubro.codigo}}</td>
+        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/rubros/', rubro.id]">Seleccionar</button></td>
+
         <td><button class="btn btn-danger" (click)="delete(rubro.id)">Eliminar</button></td>
       </tr>
     </tbody>

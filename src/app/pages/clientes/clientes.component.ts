@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clientes } from 'src/app/models/clientes';
 import { ClientesService } from 'src/app/services/pages/clientes/clientes.service';
 
@@ -9,7 +9,7 @@ import { ClientesService } from 'src/app/services/pages/clientes/clientes.servic
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-  constructor(private router: Router, private clientesService: ClientesService){}
+  constructor(private router: Router, private clientesService: ClientesService, private activatedRoute: ActivatedRoute){}
   clientes: Clientes[] = [];
   ngOnInit(): void {
     this.clientesService.getClientes().subscribe((res) =>{
@@ -30,5 +30,6 @@ export class ClientesComponent implements OnInit {
         )}
       )
       }}
+
 
   }

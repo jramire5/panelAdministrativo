@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Productos } from 'src/app/models/productos';
 import { ProductosService } from 'src/app/services/pages/productos/productos.service';
 
@@ -9,8 +9,14 @@ import { ProductosService } from 'src/app/services/pages/productos/productos.ser
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  constructor(private router: Router, private productosService: ProductosService){}
+  constructor(private router: Router, private productosService: ProductosService, public activatedRoute:ActivatedRoute){}
   productos: Productos[] = [];
+  producto: Productos = {
+    nombre: '',
+    codigo: '',
+    precio: 0,
+    id: 0
+  }
   ngOnInit(): void {
     this.productosService.getProductos().subscribe((res) =>{
       console.log('respuesta', res);
@@ -18,12 +24,10 @@ export class ProductosComponent implements OnInit {
       console.log(this.productos);
     })
     }
+    
     delete(productoID?: number): void{
-      console.log(productoID)
-      const id = productoID as number;
       if(confirm('Quiere eliminar este producto?')){
-
-      this.productosService.delete(id).subscribe(
+      this.productosService.delete(productoID as number).subscribe(
         (res) => {this.productosService.getProductos().subscribe(
           response => this.productos = response.data
         )}

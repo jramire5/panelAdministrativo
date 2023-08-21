@@ -7,7 +7,7 @@
         <th scope="col">Precio</th>
         <th scope="col">Codigo de Rubro</th>
         <th scope="col"></th>
-
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +15,8 @@
         <th scope="row">{{producto.nombre}}</th>
         <td>{{producto.codigo}}</td>
         <td>${{producto.precio}}</td>
-        <td>{{producto.RUBRO_ID}}</td>
+        <td>{{producto.rubro_id}}</td>
+        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/productos/', producto.id]">Seleccionar</button></td>
         <td><button class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button></td>
       </tr>
     </tbody>

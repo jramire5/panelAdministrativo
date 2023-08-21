@@ -5,14 +5,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddFormComponent } from './pages/rubros/add-form/add-form.component';
 import { AddProductosComponent } from './pages/productos/add-form/add-form.component';
-import { AddClientesComponent } from './pages/clientes/clientesform/clientesform.component';
+import { ClientesFormComponent } from './pages/clientes/clientesform/clientesform.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent },
   {path: 'rubros', component: AddFormComponent},
+  {path: 'rubros/:id', component: AddFormComponent},
   {path: 'productos', component: AddProductosComponent},
-  {path: 'clientes', component: AddClientesComponent},
+  {path: 'productos/:id', component: AddProductosComponent},
+  {path: 'clientes', component: ClientesFormComponent},
+  {path: 'clientes/:id', component: ClientesFormComponent},
 
 ];
 

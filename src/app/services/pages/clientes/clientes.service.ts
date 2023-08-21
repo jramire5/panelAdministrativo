@@ -13,7 +13,7 @@ ato = localStorage.getItem('ATO') as string;
   create(clientesData:Clientes): Observable<Clientes | void>{
     const headers = new HttpHeaders({'authorization':this.ato})
 
-    return this.http.post<Clientes>(`${environment.api_URL}/clientes`, {nombre: clientesData.nombre, cuit: clientesData.cuit, domicilio: clientesData?.domicilio, telefono: clientesData?.telefono},{headers}).pipe(
+    return this.http.post<Clientes>(`${environment.api_URL}/clientes`, {nombre: clientesData.nombre, cuit: clientesData.cuit, email:clientesData.email, domicilio: clientesData?.domicilio, telefono: clientesData?.telefono},{headers}).pipe(
       map((res: Clientes) => {
         console.log('Clientes', res)
       }),
@@ -41,4 +41,17 @@ ato = localStorage.getItem('ATO') as string;
       window.alert(err)
       return throwError(() => err);
     }
+    getCliente(id: number): Observable<Clientes | any>{
+      const headers = new HttpHeaders({'Authorization':this.ato})
+      return this.http.get<Clientes>(`${environment.api_URL}/clientes/${id}`,{headers})
+      }
+    edit(clientesData:Clientes, clienteID: number): Observable<Clientes | void>{
+        const headers = new HttpHeaders({'authorization':this.ato})
+        return this.http.post<Clientes>(`${environment.api_URL}/clientes/${clienteID}`, {id:clienteID, nombre: clientesData.nombre, email:clientesData.email, cuit: clientesData.cuit, domicilio: clientesData.domicilio, telefono: clientesData.telefono},{headers}).pipe(
+          map((res: Clientes) => {
+            console.log('Producto', res)
+          }),
+          catchError((err) => this.handleError(err))
+          )
+        }
   }

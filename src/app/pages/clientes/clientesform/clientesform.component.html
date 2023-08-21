@@ -1,15 +1,18 @@
 <app-clientes></app-clientes>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Cliente
+    <div *ngIf="!editar"> Agregar Cliente </div>
+    <div *ngIf="editar"> Editar Cliente </div>
+
 </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+          <h5 *ngIf="editar" class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
+          <h5 *ngIf="!editar" class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form [formGroup]="addForm" >
+        <form [formGroup]="form" >
         <div class="modal-body">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
@@ -41,7 +44,8 @@
                         formControlName="telefono"
                         class="form-control" />
                     </div>
-                    <button class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
+                    <button *ngIf="editar" class="btn btn-primary" (click)="onEdit()" type="submit">Editar</button>
+                    <button *ngIf="!editar" class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
                 </div>
         </form>
       </div>

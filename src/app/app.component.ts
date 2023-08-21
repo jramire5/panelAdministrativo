@@ -8,7 +8,7 @@ import { Productos } from './models/productos';
 })
 export class AppComponent {
   title = 'panelAdministrativo';
-  public loggedIn:boolean = false;
+  public loggedIn = localStorage.getItem('ATO');
   http = inject(HttpClient)
   changeTitle() {
     this.title = 'Panel Administrativo'

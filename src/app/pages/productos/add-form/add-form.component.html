@@ -1,23 +1,24 @@
 <p>Productos</p>
 <app-productos></app-productos>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Producto
+    <p *ngIf="!editar">Agregar Producto</p>
+    <p *ngIf="editar">Editar Producto</p>
 </button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><p *ngIf="!editar">Agregar Producto</p><p *ngIf="editar">Editar Producto</p></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form [formGroup]="addForm" >
+        <form [formGroup]="producto">
         <div class="modal-body">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
                         <input type="text"
                         formControlName="nombre"
                         class="form-control" required />
-                          <p *ngIf="addForm.get('nombre') == null">El campo es requerido</p>
                         <label for="inputPassword5" class="form-label">Codigo</label>
                         <input type="text"
                         formControlName="codigo"
@@ -32,10 +33,12 @@
                     <div class="mb-3">
                         <label for="inputPassword5" class="form-label">Rubro ID</label>
                         <input type="text"
-                        formControlName="RUBRO_ID"
+                        formControlName="rubro_id"
                         class="form-control" />
                     </div>
-                    <button class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
+                    <button *ngIf="!editar" type="submit" class="btn btn-primary" (click)="onCreate()" data-bs-dismiss="modal" aria-label="Close">Agregar</button>
+                    <button *ngIf="editar" type="submit" class="btn btn-primary" (click)="onEdit()" data-bs-dismiss="modal" aria-label="Close">Editar</button>
+
                 </div>
         </form>
       </div>

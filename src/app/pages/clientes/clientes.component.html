@@ -17,6 +17,7 @@
         <td>{{cliente.email}}</td>
         <td>{{cliente.domicilio}}</td>
         <td>{{cliente.telefono}}</td>
+        <td><button class="btn btn-warning" [routerLink]="['/clientes/',cliente.id]">Seleccionar</button></td>
         <td><button class="btn btn-danger" (click)="delete(cliente.id)">Eliminar</button></td>
       </tr>
     </tbody>
