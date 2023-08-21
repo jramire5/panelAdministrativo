@@ -1,1 +1,40 @@
-<p>ventas works!</p>
+<div class="container-sm">
+    <form class="form-group">
+        <div class="mb-3">
+            <label for="selectOption">Seleccione un Cliente:</label>
+            <select class="form-control" id="selectOption" >
+                <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">{{ cliente.nombre }}</option>
+                <option [ngValue]="0">Consumidor Final</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+            <input type="date"
+            formControlName="fecha"
+            class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Observaciones</label>
+            <input type="text-area"
+            formControlName="observaciones"
+            class="form-control"/>
+        </div>
+
+        <div class="mx-auto my-2">
+        </div>
+        <div class="mx-auto my-2">
+            <button class="btn btn-warning">Finalizar Compra</button>
+        </div>
+    </form>
+<form [formGroup]="carritoForm">
+    <div class="mb-3">
+        <label for="selectOption">Seleccione productos</label>
+        <select class="form-control" id="selectOption">
+            <option formControlName="product" *ngFor="let product of productos" [value]="product.id">{{ product.nombre }} ${{ product.precio }}
+            </option>
+        </select>
+        <button (click)="onAdd()" type="submit" class="btn btn-outline-success">Agregar</button>
+    </div>
+</form>
+
+  </div>

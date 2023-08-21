@@ -12,11 +12,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let producto of productos">
-        <th scope="row">{{producto.nombre}}</th>
+        <th scope="row" routerLinkActive="activo">{{producto.nombre}}</th>
         <td>{{producto.codigo}}</td>
         <td>${{producto.precio}}</td>
         <td>{{producto.rubro_id}}</td>
-        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/productos/', producto.id]">Seleccionar</button></td>
+        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/productos/', producto.id]" >Seleccionar</button></td>
         <td><button class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button></td>
       </tr>
     </tbody>

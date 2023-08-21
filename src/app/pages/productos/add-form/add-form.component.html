@@ -1,10 +1,16 @@
-<p>Productos</p>
+<h1>Productos</h1>
 <app-productos></app-productos>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <p *ngIf="!editar">Agregar Producto</p>
-    <p *ngIf="editar">Editar Producto</p>
-</button>
-
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto d-flex align-items-center">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <p *ngIf="!editar">Agregar Producto</p>
+        <p *ngIf="editar">Editar Producto</p>
+      </button>
+      <h5 class="mx-auto" *ngIf="editar">Producto Seleccionado:  {{producto.value.nombre}}</h5>
+    </div>
+  </div>
+</div>
   <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

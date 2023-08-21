@@ -37,7 +37,6 @@ export class AddProductosComponent implements OnInit{
                 rubro_id: es.data.rubro_id
               })
               console.log(es.data)
-              console.log(this.producto)
             }
           )
         }

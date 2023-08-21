@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="btn btn-outline-primary mx-3" [routerLink]="''" >Home</button>
   <div class="container-md">
+    <button class="btn btn-outline-primary mx-3" [routerLink]="''" >Home</button>
     <ul class="collapse navbar-collapse">
       <p *ngIf="checkToken() == true">Bienvenido/a, {{username}}   </p>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'rubros'">Rubros</button>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'productos'">Productos</button>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'clientes'">Clientes</button>
+      <button *ngIf="checkToken() == false" class="btn btn-outline-success mx-5"  [routerLink]="'login'">Login</button>
     </ul>
-    <button *ngIf="checkToken() == false" class="btn btn-outline-success mx-5"  [routerLink]="'login'">Login</button>
     <button *ngIf="checkToken() == true" class="btn btn-outline-danger mx-5" (click)="onLogout()">Logout</button>
-    </div>
+  </div>
 </nav>
