@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Productos } from 'src/app/models/productos';
+import { DataService } from 'src/app/services/data-service.service';
 import { ProductosService } from 'src/app/services/pages/productos/productos.service';
 
 @Component({
@@ -9,8 +10,7 @@ import { ProductosService } from 'src/app/services/pages/productos/productos.ser
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  constructor(private router: Router, private productosService: ProductosService, public activatedRoute:ActivatedRoute, ){}
-  
+  constructor(private dataService: DataService, private router: Router, private productosService: ProductosService, public activatedRoute:ActivatedRoute, ){}
   productos: Productos[] = [];
   producto: Productos = {
     nombre: '',
@@ -19,13 +19,20 @@ export class ProductosComponent implements OnInit {
     rubro_id: '',
     id: 0
   }
+  id: number = 0;
   productosEncontrados: Productos[] = []
   searchTerm: string = '';
   ngOnInit(): void {
     this.productosService.getProductos(1).subscribe((res) =>{
       this.productos = res.data;
+      this.activatedRoute.params.subscribe(
+        e => {
+          let id=e['id'];
+          if(id){
+            this.id = id;
+          }
     })
-    }
+    })}
     delete(productoID?: number): void{
       if(confirm('Quiere eliminar este producto?')){
       this.productosService.delete(productoID as number).subscribe(
@@ -36,7 +43,7 @@ export class ProductosComponent implements OnInit {
       }}
       updateSearchResults(): void {
         if (this.searchTerm) {
-          this.productosService.search(this.searchTerm)
+          this.dataService.search(this.searchTerm, 'productos')
           .subscribe(data => {
             console.log('datos',data)
             this.productos = data.data;

@@ -5,6 +5,7 @@ import { Items } from 'src/app/models/items';
 import { Productos } from 'src/app/models/productos';
 import { Ventas } from 'src/app/models/ventas';
 import { environment } from 'src/environments/environment';
+import { DataService } from '../../data-service.service';
 
 @Injectable({
   providedIn: 'root'

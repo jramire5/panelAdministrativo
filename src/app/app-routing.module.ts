@@ -9,14 +9,15 @@ import { AddProductosComponent } from './pages/productos/add-form/add-form.compo
 import { ClientesFormComponent } from './pages/clientes/clientesform/clientesform.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
 import { ListadoVentasComponent } from './pages/ventas/listado/listado.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent },
   {path: 'rubros', component: AddFormComponent},
   {path: 'rubros/:id', component: AddFormComponent},
-  {path: 'productos', component: AddProductosComponent},
-  {path: 'productos/:id', component: AddProductosComponent},
+  {path: 'productos', component: ProductosComponent},
+  {path: 'productos/:id', component: ProductosComponent},
   {path: 'clientes', component: ClientesFormComponent},
   {path: 'clientes/:id', component: ClientesFormComponent},
   {path: 'ventas', component: VentasComponent},

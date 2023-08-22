@@ -44,10 +44,6 @@ export class ProductosService {
           const headers = new HttpHeaders({'Authorization':this.ato})
           return this.http.get<Productos[]>(`${environment.api_URL}/productos?order_by_column=${criteria}&order_by_direction=ASC`,{headers})
           }
-        search(nombre: string): Observable<Productos[] | any>{
-          const headers = new HttpHeaders({'Authorization':this.ato})
-          return this.http.get<Productos[]>(`${environment.api_URL}/productos?search=${nombre}`,{headers})
-          }
         getProducto(id: number): Observable<Productos | any>{
           const headers = new HttpHeaders({'Authorization':this.ato})
           return this.http.get<Productos>(`${environment.api_URL}/productos/${id}`,{headers})

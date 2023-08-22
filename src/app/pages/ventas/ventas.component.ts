@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Clientes } from 'src/app/models/clientes';
 import { Items } from 'src/app/models/items';
 import { Productos } from 'src/app/models/productos';
+import { DataService } from 'src/app/services/data-service.service';
 import { ClientesService } from 'src/app/services/pages/clientes/clientes.service';
 import { ProductosService } from 'src/app/services/pages/productos/productos.service';
 import { VentasService } from 'src/app/services/pages/ventas/ventas.service';
@@ -17,7 +18,7 @@ import { VentasService } from 'src/app/services/pages/ventas/ventas.service';
 
 export class VentasComponent {
   @ViewChild('productSelect') productSelect: ElementRef | undefined;
-  constructor(private ventasService: VentasService, private productosService: ProductosService, private router: Router, private clientesService: ClientesService, private activatedRoute: ActivatedRoute, private fb:FormBuilder){}
+  constructor(private dataService: DataService, private ventasService: VentasService, private productosService: ProductosService, private router: Router, private clientesService: ClientesService, private activatedRoute: ActivatedRoute, private fb:FormBuilder){}
   form = this.fb.group({
     cliente:[0],
     productos:[[]],
@@ -59,7 +60,6 @@ export class VentasComponent {
           id: res.data.id
         }
         this.carrito.push(this.producto)
-        
         this.form.value.importe_total = 0
         this.form.value.importe_total! += this.carrito.reduce((total, product) => +total + +product.precio, 0);
 
@@ -68,12 +68,11 @@ export class VentasComponent {
     searchTerm: string = '';
     updateSearchResults(): void {
       if (this.searchTerm) {
-        this.productosService.search(this.searchTerm)
+        this.dataService.search(this.searchTerm, 'productos')
         .subscribe(data => {
           console.log('datos',data)
           this.productos = data.data;
           this.openProductSelect();
-
         });
       }
     }
@@ -102,5 +101,4 @@ export class VentasComponent {
     openProductSelect(): void {
       this.productSelect?.nativeElement.click();
     }
-  
   }

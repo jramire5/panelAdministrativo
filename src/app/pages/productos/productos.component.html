@@ -1,20 +1,21 @@
-<p>Lista de Productos</p>
-<input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Buscar por Nombre" (input)="updateSearchResults()">
-<ul>
-  <button class="mx-1" (click)="pagina(1)">
-    1
-  </button>
-  <button (click)="pagina(2)">
-    2
-  </button>
-</ul>
-<table class="table table-striped">
+<h3 class="text-center">Lista de Productos</h3>
+<div class="container">
+  <input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Buscar por Nombre" (input)="updateSearchResults()">
+  <ul>
+    <button class="mx-1" (click)="pagina(1)">
+      1
+    </button>
+    <button (click)="pagina(2)">
+      2
+    </button>
+  </ul>
+  <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><button (click)="ordenar('nombre')" class="btn-outline-primary btn">Nombre</button></th>
-        <th scope="col"><button (click)="ordenar('codigo')" class="btn-outline-primary btn">Codigo</button></th>
-        <th scope="col"><button (click)="ordenar('precio')" class="btn-outline-primary btn">Precio</button></th>
-        <th scope="col"><button (click)="ordenar('rubro_id')" class="btn-outline-primary btn">Codigo de Rubro</button></th>
+        <th scope="col"><button (click)="ordenar('nombre')" class="btn-dark btn">Nombre</button></th>
+        <th scope="col"><button (click)="ordenar('codigo')" class="btn-dark btn">Codigo</button></th>
+        <th scope="col"><button (click)="ordenar('precio')" class="btn-dark btn">Precio</button></th>
+        <th scope="col"><button (click)="ordenar('rubro_id')" class="btn-dark btn">Codigo de Rubro</button></th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -25,9 +26,15 @@
         <td>{{producto.codigo}}</td>
         <td>${{producto.precio}}</td>
         <td>{{producto.rubro_id}}</td>
-        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/productos/', producto.id]" >Seleccionar</button></td>
-        <td><button class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button></td>
+        <td *ngIf="producto.id != id" ><button class="btn btn-warning" type="button" name="button" [routerLink]="['/productos/', producto.id]" >Seleccionar</button></td>
+        <td *ngIf="producto.id == id">  <app-add-productos></app-add-productos> </td>
+        <td><button *ngIf="producto.id == id" class="btn btn-danger px-4" (click)="delete(producto.id)">Eliminar</button></td>
       </tr>
     </tbody>
-</table>
-<h4 *ngIf="productos.length == 0">No se Encontraron Productos</h4>
+  </table>
+  <div class="col-5 mx-auto d-flex align-items-center">
+    <button class="btn btn-warning" *ngIf="id != 0" [routerLink]="'/productos'">Quitar Seleccion</button>
+    <app-add-productos *ngIf="id == 0"></app-add-productos>
+  </div>
+</div>
+  <h4 *ngIf="productos.length == 0">No se Encontraron Productos</h4>
