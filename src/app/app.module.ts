@@ -18,6 +18,7 @@ import { AddProductosComponent } from './pages/productos/add-form/add-form.compo
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ClientesFormComponent } from './pages/clientes/clientesform/clientesform.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { ListadoComponent } from './components/pages/ventas/listado/listado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { VentasComponent } from './pages/ventas/ventas.component';
     AddProductosComponent,
     ClientesComponent,
     ClientesFormComponent,
-    VentasComponent
+    VentasComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

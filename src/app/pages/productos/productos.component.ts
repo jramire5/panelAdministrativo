@@ -15,6 +15,7 @@ export class ProductosComponent implements OnInit {
     nombre: '',
     codigo: '',
     precio: 0,
+    rubro_id: '',
     id: 0
   }
   ngOnInit(): void {
@@ -24,7 +25,6 @@ export class ProductosComponent implements OnInit {
       console.log(this.productos);
     })
     }
-    
     delete(productoID?: number): void{
       if(confirm('Quiere eliminar este producto?')){
       this.productosService.delete(productoID as number).subscribe(

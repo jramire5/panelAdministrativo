@@ -36,17 +36,16 @@
                         formControlName="precio"
                         class="form-control" />
                     </div>
-                    <div class="mb-3">
-                        <label for="inputPassword5" class="form-label">Rubro ID</label>
-                        <input type="text"
-                        formControlName="rubro_id"
-                        class="form-control" />
-                    </div>
+                    <label for="selectOption">Rubro</label>
+                    <select formControlName="rubro_id" class="form-control" id="selectOption">
+                        <option *ngFor="let rubro of rubros" [value]="rubro.id">{{ rubro.nombre}} ({{ rubro.id}})
+                        </option>
+                    </select>
                     <button *ngIf="!editar" type="submit" class="btn btn-primary" (click)="onCreate()" data-bs-dismiss="modal" aria-label="Close">Agregar</button>
                     <button *ngIf="editar" type="submit" class="btn btn-primary" (click)="onEdit()" data-bs-dismiss="modal" aria-label="Close">Editar</button>
 
                 </div>
-        </form>
+        </form> 
       </div>
     </div>
   </div>

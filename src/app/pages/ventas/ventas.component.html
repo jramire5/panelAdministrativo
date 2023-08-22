@@ -1,5 +1,15 @@
-<div class="container-sm">
-    <form class="form-group">
+<h2 class="text-center">Nueva Venta</h2>
+<div class="container-sm my-5">
+    <form [formGroup]="carritoForm">
+        <label for="selectOption">Seleccione productos</label>
+        <select formControlName="id" class="form-control" id="selectOption">
+            <option  *ngFor="let producto of productos" [value]="producto.id"><div class="form-control">{{ producto.nombre }}</div> ${{ producto.precio }}
+            </option>
+        </select>
+        <button (click)="onAdd()" type="submit" class="btn btn-outline-success my-2">Agregar</button>
+
+    </form>
+    <form [formGroup]="form">
         <div class="mb-3">
             <label for="selectOption">Seleccione un Cliente:</label>
             <select class="form-control" id="selectOption" >
@@ -19,22 +29,25 @@
             formControlName="observaciones"
             class="form-control"/>
         </div>
-
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Monto Total</label>
+        <p class="form-control">${{form.value.importe_total}}</p>
+        </div>
         <div class="mx-auto my-2">
         </div>
         <div class="mx-auto my-2">
-            <button class="btn btn-warning">Finalizar Compra</button>
+            <button (click)="onCreate()" class="btn btn-warning">Cargar Venta</button>
         </div>
     </form>
-<form [formGroup]="carritoForm">
     <div class="mb-3">
-        <label for="selectOption">Seleccione productos</label>
-        <select class="form-control" id="selectOption">
-            <option formControlName="product" *ngFor="let product of productos" [value]="product.id">{{ product.nombre }} ${{ product.precio }}
-            </option>
-        </select>
-        <button (click)="onAdd()" type="submit" class="btn btn-outline-success">Agregar</button>
+<tbody>
+    <div class="container" *ngIf="carrito.length > 0">
+        Lista de Productos
+        <tr *ngFor="let producto of carrito">
+            <th scope="row" routerLinkActive="activo">{{producto.nombre}}  </th>
+            <td>${{producto.precio}}</td>
+        </tr>
     </div>
-</form>
-
+    <td><button class="btn btn-danger" (click)="onRemove(producto.id!)">Eliminar</button></td>
+  </tbody>
   </div>
