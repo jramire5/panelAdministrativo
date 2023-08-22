@@ -1,18 +1,22 @@
-<p>Log In</p>
-<div class=" row g-3 align-items-center container-md">
-    <form [formGroup]="loginForm" class="w-25 text-bg-light rounded" >
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Username</label>
-            <input type="text"
-            formControlName="username"
-            class="form-control"  placeholder="username" required />
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h3 class="text-center my-3">Log In</h3>
+        <div class="col-auto">
+            <form [formGroup]="loginForm" class="px-3 py-4 text-bg-light rounded" >
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                    <input type="text"
+                        formControlName="username"
+                    class="form-control"  placeholder="username" required />
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password"
+                    formControlName="password"
+                    id="inputPassword5" class="form-control" />
+                </div>
+                <button (click)="onLogin()" type="submit" class="btn btn-success">Log In</button>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="inputPassword5" class="form-label">Password</label>
-            <input type="password"
-            formControlName="password"
-            id="inputPassword5" class="form-control" />
-        </div>
-        <button (click)="onLogin()" type="submit" class="btn btn-outline-success">Log In</button>
-    </form>
+    </div>
 </div>

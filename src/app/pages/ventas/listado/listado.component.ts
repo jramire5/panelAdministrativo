@@ -12,8 +12,15 @@ constructor(private ventasService : VentasService){}
 ventas: Ventas[] = []
 ngOnInit(): void {
     this.ventasService.getVentas().subscribe((res) =>{
-      console.log('respuesta', res);
       this.ventas = res.data;
     })
     }
+    delete(ventaID?: number): void{
+      const id = ventaID as number;
+      this.ventasService.delete(id).subscribe(
+        (res) => {this.ventasService.getVentas().subscribe(
+          response => this.ventas = response.data
+        )}
+      )
+      }
 }

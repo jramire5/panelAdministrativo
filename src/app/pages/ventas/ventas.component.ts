@@ -61,7 +61,6 @@ export class VentasComponent {
         this.form.value.importe_total! += this.carrito.reduce((total, product) => +total + +product.precio, 0);
 
       })
-      console.log(this.carrito);
     }
     onRemove(id: number): void {
       this.carrito.pop();
@@ -70,7 +69,6 @@ export class VentasComponent {
     }
     onCreate(): void{
       const formValue = this.form.value;
-      console.log('formValue', formValue)
       const createData = {
         fecha: formValue.fecha as Date,
         cliente_id: formValue.cliente as number,
@@ -82,7 +80,6 @@ export class VentasComponent {
 
         this.ventasService.create(createData, this.items).subscribe( (res) =>
         {
-          console.log('created', res)
           this.router.navigate(['/'])
         })
       }

@@ -1,14 +1,15 @@
-<h1 class="text-center">Bienvenido/a, {{username}} a</h1>
+<h1 *ngIf="checkToken() == true" class="text-center">Bienvenido/a, {{username}} a</h1>
 <h3 class="text-center">La gestión de ventas del futuro</h3>
-<div *ngIf="checkToken() == false">
-    <h2>Haga Click en Log in para ingresar</h2>
-    <button *ngIf="checkToken() == false" class="btn btn-outline-success "  [routerLink]="'login'">Login</button>
-</div>
-<div *ngIf="checkToken() == true">
-    <h4 class="text-center">Categorías disponibles</h4>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-auto">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div *ngIf="checkToken() == false">
+                <h6>Haga Click en Log in para ingresar</h6>
+                <button *ngIf="checkToken() == false" class="btn btn-success "  [routerLink]="'login'">Login</button>
+            </div>
+            <div *ngIf="checkToken() == true">
+                <h4  class="text-center">Categorías disponibles</h4>
                 <ul class="text-center list-unstyled">
                     <li class="my-3">
                         <button class="btn btn-success" [routerLink]="'rubros'">

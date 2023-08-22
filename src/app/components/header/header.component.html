@@ -2,7 +2,6 @@
   <div class="container-md">
     <button class="btn btn-outline-primary mx-3" [routerLink]="''" >Home</button>
     <ul class="collapse navbar-collapse">
-      <p *ngIf="checkToken() == true">Bienvenido/a, {{username}}   </p>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'rubros'">Rubros</button>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'productos'">Productos</button>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'clientes'">Clientes</button>

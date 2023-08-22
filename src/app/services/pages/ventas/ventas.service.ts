@@ -21,6 +21,14 @@ export class VentasService {
       catchError((err) => this.handleError(err))
       )
     }
+    delete(ventaID:number): Observable<Ventas | void>{
+      const headers = new HttpHeaders({'authorization':this.ato})
+      return this.http.post<Ventas>(`${environment.api_URL}/ventas/eliminar`,{id: ventaID},{headers}).pipe(
+        map((res: Ventas) => {
+        }),
+        catchError((err) => this.handleError(err))
+        )
+      }
   calcularItems = (productos: Productos[]): Items[] => {
       const itemsMap: Map<number, Items> = new Map();
       productos.forEach((producto) => {
