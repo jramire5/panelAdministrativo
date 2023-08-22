@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,7 +14,9 @@ import { VentasService } from 'src/app/services/pages/ventas/ventas.service';
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
+
 export class VentasComponent {
+  @ViewChild('productSelect') productSelect: ElementRef | undefined;
   constructor(private ventasService: VentasService, private productosService: ProductosService, private router: Router, private clientesService: ClientesService, private activatedRoute: ActivatedRoute, private fb:FormBuilder){}
   form = this.fb.group({
     cliente:[0],
@@ -42,7 +44,7 @@ export class VentasComponent {
     this.clientesService.getClientes().subscribe((res) =>{
       this.clientes = res.data;
     })
-    this.productosService.getProductos().subscribe((res) => {
+    this.productosService.getProductos(1).subscribe((res) => {
       this.productos = res.data;
     })
     }
@@ -57,10 +59,23 @@ export class VentasComponent {
           id: res.data.id
         }
         this.carrito.push(this.producto)
+        
         this.form.value.importe_total = 0
         this.form.value.importe_total! += this.carrito.reduce((total, product) => +total + +product.precio, 0);
 
       })
+    }
+    searchTerm: string = '';
+    updateSearchResults(): void {
+      if (this.searchTerm) {
+        this.productosService.search(this.searchTerm)
+        .subscribe(data => {
+          console.log('datos',data)
+          this.productos = data.data;
+          this.openProductSelect();
+
+        });
+      }
     }
     onRemove(id: number): void {
       this.carrito.pop();
@@ -80,8 +95,12 @@ export class VentasComponent {
 
         this.ventasService.create(createData, this.items).subscribe( (res) =>
         {
-          this.router.navigate(['/'])
+          this.router.navigate(['/ventas/listado'])
         })
       }
     }
+    openProductSelect(): void {
+      this.productSelect?.nativeElement.click();
+    }
+  
   }

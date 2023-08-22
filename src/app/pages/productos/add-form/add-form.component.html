@@ -7,7 +7,14 @@
         <p *ngIf="!editar">Agregar Producto</p>
         <p *ngIf="editar">Editar Producto</p>
       </button>
-      <h5 class="mx-auto" *ngIf="editar">Producto Seleccionado:  {{producto.value.nombre}}</h5>
+      <div class="col-6">
+        <h5 class="mx-3" *ngIf="editar">Producto Seleccionado:  {{producto.value.nombre}}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5 my-4 mx-auto d-flex align-items-center">
+        <button class="btn btn-warning" *ngIf="editar" [routerLink]="'/productos'">Quitar Seleccion</button>
+      </div>
     </div>
   </div>
 </div>

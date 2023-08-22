@@ -13,14 +13,10 @@ export class ClientesComponent implements OnInit {
   clientes: Clientes[] = [];
   ngOnInit(): void {
     this.clientesService.getClientes().subscribe((res) =>{
-      console.log('respuesta', res);
       this.clientes = res.data;
-      console.log(this.clientes);
     })
-    console.log(this.clientes)
     }
     delete(clienteID?: number): void{
-      console.log(clienteID)
       const id = clienteID as number;
       if(confirm('¿Quiere eliminar este Cliente?')){
 

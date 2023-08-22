@@ -6,7 +6,8 @@
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'productos'">Productos</button>
       <button *ngIf="checkToken() == true" class="btn btn-outline-success mx-3"  [routerLink]="'clientes'">Clientes</button>
     </ul>
+    <button *ngIf="checkToken() == true" [routerLink]="'ventas'" class="text-center btn btn-outline-warning">Punto de Venta</button>
     <button *ngIf="checkToken() == false" class="btn btn-outline-success mx-5"  [routerLink]="'login'">Login</button>
-    <button *ngIf="checkToken() == true" class="btn btn-outline-danger mx-5" (click)="onLogout()">Logout</button>
+    <button *ngIf="checkToken() == true" class="btn btn-outline-danger mx-5" [routerLink]="''"  (click)="onLogout()">Logout</button>
   </div>
 </nav>

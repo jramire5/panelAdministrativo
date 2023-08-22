@@ -1,12 +1,11 @@
-<h1 *ngIf="checkToken() == true" class="text-center">Bienvenido/a, {{username}} a</h1>
-<h3 class="text-center">La gestión de ventas del futuro</h3>
+<h1 *ngIf="checkToken() == true" class="text-center">Bienvenido/a, {{username}}</h1>
+<h1 *ngIf="checkToken() == false" class="text-center">Bienvenido Nuevamente</h1>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-auto">
             <div *ngIf="checkToken() == false">
-                <h6>Haga Click en Log in para ingresar</h6>
-                <button *ngIf="checkToken() == false" class="btn btn-success "  [routerLink]="'login'">Login</button>
+                <app-login></app-login>
             </div>
             <div *ngIf="checkToken() == true">
                 <h4  class="text-center">Categorías disponibles</h4>
@@ -27,7 +26,7 @@
                         </button>
                     </li>
                     <li class="my-3">
-                            <button [routerLink]="'ventas'" class="text-center btn btn-warning">Registrar Ventas</button>
+                            <button [routerLink]="'ventas'" class="text-center btn btn-warning">Punto de Venta</button>
                     </li>
                     <li class="my-3">
                         <button [routerLink]="'ventas/listado'" class="text-center btn btn-warning">Gestionar Ventas</button>

@@ -1,18 +1,19 @@
-<h2 class="text-center">Nueva Venta</h2>
+<h2 class="text-center">Punto de Venta</h2>
 <div class="container-sm my-5 bg-light py-5 rounded">
+    <input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Busque Productos" (input)="updateSearchResults()">
     <form [formGroup]="carritoForm">
         <label for="selectOption">Seleccione productos</label>
-        <select formControlName="id" class="form-control" id="selectOption">
-            <option  *ngFor="let producto of productos" [value]="producto.id"><div class="form-control">{{ producto.nombre }}</div> ${{ producto.precio }}
-            </option>
-        </select>
-        <button (click)="onAdd()" type="submit" class="btn btn-outline-success my-2">Agregar</button>
-
-    </form>
+            <select formControlName="id" class="form-control" id="selectOption" #productSelect>
+                <option *ngFor="let producto of productos" [value]="producto.id">
+                    <div class="form-control">{{ producto.nombre }} ${{ producto.precio }}</div>
+                </option>
+            </select>
+            <button (click)="onAdd()" type="submit" class="btn btn-outline-success my-2">Agregar</button>
+        </form>
     <form [formGroup]="form">
         <div class="mb-3">
             <label for="selectOption">Seleccione un Cliente:</label>
-            <select class="form-control" id="selectOption" >
+            <select formControlName="cliente" class="form-control" id="selectOption" >
                 <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">{{ cliente.nombre }}</option>
                 <option [ngValue]="1">Consumidor Final</option>
             </select>

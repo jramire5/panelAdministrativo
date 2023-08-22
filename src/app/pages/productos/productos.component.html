@@ -1,11 +1,20 @@
 <p>Lista de Productos</p>
+<input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Buscar por Nombre" (input)="updateSearchResults()">
+<ul>
+  <button class="mx-1" (click)="pagina(1)">
+    1
+  </button>
+  <button (click)="pagina(2)">
+    2
+  </button>
+</ul>
 <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Codigo</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Codigo de Rubro</th>
+        <th scope="col"><button (click)="ordenar('nombre')" class="btn-outline-primary btn">Nombre</button></th>
+        <th scope="col"><button (click)="ordenar('codigo')" class="btn-outline-primary btn">Codigo</button></th>
+        <th scope="col"><button (click)="ordenar('precio')" class="btn-outline-primary btn">Precio</button></th>
+        <th scope="col"><button (click)="ordenar('rubro_id')" class="btn-outline-primary btn">Codigo de Rubro</button></th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -20,4 +29,5 @@
         <td><button class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button></td>
       </tr>
     </tbody>
-  </table>
+</table>
+<h4 *ngIf="productos.length == 0">No se Encontraron Productos</h4>
