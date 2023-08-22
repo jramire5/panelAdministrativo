@@ -48,9 +48,7 @@ export class VentasComponent {
     }
     onAdd(): void{
       const formValue = this.carritoForm.value.id;
-      console.log('formValue', formValue)
       this.productosService.getProducto(formValue as number).subscribe((res) => {
-        console.log('res', res.data)
         this.producto = {
           nombre: res.data.nombre,
           codigo: res.data.codigo,

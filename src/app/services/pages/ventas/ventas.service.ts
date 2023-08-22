@@ -15,14 +15,13 @@ export class VentasService {
   constructor(private http:HttpClient) { }
   create(ventasData:Ventas, items: any): Observable<Ventas | void>{
     const headers = new HttpHeaders({'Authorization':this.ato})
-    return this.http.post<Ventas>(`${environment.api_URL}/ventas`, {items: items,cliente_id: ventasData.cliente_id, importeTotal: ventasData.importe_total, fecha: ventasData.fecha, obervaciones: ventasData.observaciones},{headers}).pipe(
+    return this.http.post<Ventas>(`${environment.api_URL}/ventas`, {items: items,cliente_id: ventasData.cliente_id, importe_total: ventasData.importe_total, fecha: ventasData.fecha, obervaciones: ventasData.observaciones},{headers}).pipe(
       map((res: Ventas) => {
-        console.log('Venta', res)
       }),
       catchError((err) => this.handleError(err))
       )
     }
-     calcularItems = (productos: Productos[]): Items[] => {
+  calcularItems = (productos: Productos[]): Items[] => {
       const itemsMap: Map<number, Items> = new Map();
       productos.forEach((producto) => {
         const cantidad = 1; // Puedes ajustar esto según tus necesidades
@@ -40,10 +39,12 @@ export class VentasService {
           itemsMap.set(producto.id as number, newItem);
         }
       });
-    
       return Array.from(itemsMap.values());
     };
-    
+    getVentas(): Observable<Ventas[] | any>{
+      const headers = new HttpHeaders({'Authorization':this.ato})
+      return this.http.get<Ventas[]>(`${environment.api_URL}/ventas`,{headers})
+      }
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An error ocurred!';
     if (err){

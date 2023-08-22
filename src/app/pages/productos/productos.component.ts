@@ -20,9 +20,7 @@ export class ProductosComponent implements OnInit {
   }
   ngOnInit(): void {
     this.productosService.getProductos().subscribe((res) =>{
-      console.log('respuesta', res);
       this.productos = res.data;
-      console.log(this.productos);
     })
     }
     delete(productoID?: number): void{

@@ -36,13 +36,11 @@ export class AddProductosComponent implements OnInit{
           this.editar = true;
           this.productosService.getProducto(id).subscribe(
             (es) => {
-              console.log(this.producto)
               this.producto.patchValue({nombre: es.data.nombre,
                 codigo:es.data.codigo,
                 precio:es.data.precio,
                 rubro_id: es.data.rubro_id
               })
-              console.log(es.data)
             }
           )
         }
@@ -51,7 +49,6 @@ export class AddProductosComponent implements OnInit{
   }
   onCreate(): void{
     const formValue = this.producto.value;
-    console.log('formValue', formValue)
     const createData = {
       nombre: formValue.nombre as string,
       codigo: formValue.codigo as string,
@@ -62,7 +59,7 @@ export class AddProductosComponent implements OnInit{
 
       this.productosService.create(createData).subscribe( (res) =>
       {
-        console.log('created', res)
+        this.router.navigate([''])
       })
     }
   }
@@ -71,9 +68,7 @@ export class AddProductosComponent implements OnInit{
     this.activatedRoute.params.subscribe(
       e => {
         let id=e['id'];
-        console.log('id',id)
         if(id){
-    console.log('formValue', formValue)
     const editedData = {
       nombre: formValue.nombre as string,
       codigo: formValue.codigo as string,

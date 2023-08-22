@@ -15,7 +15,6 @@ ato = localStorage.getItem('ATO') as string;
 
     return this.http.post<Clientes>(`${environment.api_URL}/clientes`, {nombre: clientesData.nombre, cuit: clientesData.cuit, email:clientesData.email, domicilio: clientesData?.domicilio, telefono: clientesData?.telefono},{headers}).pipe(
       map((res: Clientes) => {
-        console.log('Clientes', res)
       }),
       catchError((err) => this.handleError(err))
       )
@@ -24,7 +23,6 @@ ato = localStorage.getItem('ATO') as string;
       const headers = new HttpHeaders({'authorization':this.ato})
       return this.http.post<Clientes>(`${environment.api_URL}/clientes/eliminar`,{id: clienteID},{headers}).pipe(
         map((res: Clientes) => {
-          console.log('Rubro', res)
         }),
         catchError((err) => this.handleError(err))
         )
@@ -49,7 +47,6 @@ ato = localStorage.getItem('ATO') as string;
         const headers = new HttpHeaders({'authorization':this.ato})
         return this.http.post<Clientes>(`${environment.api_URL}/clientes/${clienteID}`, {id:clienteID, nombre: clientesData.nombre, email:clientesData.email, cuit: clientesData.cuit, domicilio: clientesData.domicilio, telefono: clientesData.telefono},{headers}).pipe(
           map((res: Clientes) => {
-            console.log('Producto', res)
           }),
           catchError((err) => this.handleError(err))
           )

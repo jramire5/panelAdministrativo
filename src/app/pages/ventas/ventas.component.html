@@ -14,7 +14,7 @@
             <label for="selectOption">Seleccione un Cliente:</label>
             <select class="form-control" id="selectOption" >
                 <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">{{ cliente.nombre }}</option>
-                <option [ngValue]="0">Consumidor Final</option>
+                <option [ngValue]="1">Consumidor Final</option>
             </select>
         </div>
         <div class="mb-3">
@@ -35,8 +35,14 @@
         </div>
         <div class="mx-auto my-2">
         </div>
-        <div class="mx-auto my-2">
-            <button (click)="onCreate()" class="btn btn-warning">Cargar Venta</button>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div class="mx-auto my-2">
+                        <button (click)="onCreate()" class="btn btn-warning">Cargar Venta</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
     <div class="mb-3">
@@ -47,7 +53,7 @@
             <th scope="row" routerLinkActive="activo">{{producto.nombre}}  </th>
             <td>${{producto.precio}}</td>
         </tr>
+        <td><button class="btn btn-danger" (click)="onRemove(producto.id!)">Eliminar</button></td>
     </div>
-    <td><button class="btn btn-danger" (click)="onRemove(producto.id!)">Eliminar</button></td>
   </tbody>
   </div>

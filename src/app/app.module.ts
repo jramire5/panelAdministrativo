@@ -18,7 +18,7 @@ import { AddProductosComponent } from './pages/productos/add-form/add-form.compo
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ClientesFormComponent } from './pages/clientes/clientesform/clientesform.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
-import { ListadoComponent } from './components/pages/ventas/listado/listado.component';
+import { ListadoVentasComponent } from './pages/ventas/listado/listado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,7 @@ import { ListadoComponent } from './components/pages/ventas/listado/listado.comp
     ClientesComponent,
     ClientesFormComponent,
     VentasComponent,
-    ListadoComponent
+    ListadoVentasComponent
   ],
   imports: [
     BrowserModule,

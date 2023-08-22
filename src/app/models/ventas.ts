@@ -3,4 +3,5 @@ export interface Ventas {
     cliente_id: number;
     importe_total: number;
     observaciones?: string;
+    id?: number
 }

@@ -44,8 +44,8 @@
                         formControlName="telefono"
                         class="form-control" />
                     </div>
-                    <button *ngIf="editar" class="btn btn-primary" (click)="onEdit()" type="submit">Editar</button>
-                    <button *ngIf="!editar" class="btn btn-primary" (click)="onCreate()" type="submit">Agregar</button>
+                    <button *ngIf="!editar" type="submit" class="btn btn-primary" (click)="onCreate()" data-bs-dismiss="modal" aria-label="Close">Agregar</button>
+                    <button *ngIf="editar" type="submit" class="btn btn-primary" (click)="onEdit()" data-bs-dismiss="modal" aria-label="Close">Editar</button>
                 </div>
         </form>
       </div>

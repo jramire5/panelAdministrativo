@@ -16,7 +16,6 @@ export class ProductosService {
         const headers = new HttpHeaders({'authorization':this.ato})
         return this.http.post<Productos>(`${environment.api_URL}/productos`, {nombre: productosData.nombre, codigo: productosData.codigo, precio: productosData.precio, rubro_id: productosData?.rubro_id},{headers}).pipe(
           map((res: Productos) => {
-            console.log('Producto', res)
           }),
           catchError((err) => this.handleError(err))
           )
@@ -25,7 +24,6 @@ export class ProductosService {
           const headers = new HttpHeaders({'authorization':this.ato})
           return this.http.post<Productos>(`${environment.api_URL}/productos/${productoID}`, {id:productoID, nombre: productosData.nombre, codigo: productosData.codigo, precio: productosData.precio, rubro_id: productosData?.rubro_id},{headers}).pipe(
             map((res: Productos) => {
-              console.log('Producto', res)
             }),
             catchError((err) => this.handleError(err))
             )
@@ -34,7 +32,6 @@ export class ProductosService {
           const headers = new HttpHeaders({'authorization':this.ato})
           return this.http.post<Productos>(`${environment.api_URL}/productos/eliminar`,{id: productoID},{headers}).pipe(
             map((res: Productos) => {
-              console.log('Producto', res)
             }),
             catchError((err) => this.handleError(err))
             )

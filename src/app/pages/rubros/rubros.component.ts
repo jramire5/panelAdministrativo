@@ -13,13 +13,10 @@ export class RubrosComponent implements OnInit {
   rubros: Rubros[] = [];
   ngOnInit(): void {
     this.rubrosService.getRubros().subscribe((res) =>{
-      console.log('respuesta', res);
       this.rubros = res.data;
-      console.log(this.rubros);
     })
     }
     delete(productoID?: number): void{
-      console.log(productoID)
       const id = productoID as number;
       this.rubrosService.delete(id).subscribe(
         (res) => {this.rubrosService.getRubros().subscribe(

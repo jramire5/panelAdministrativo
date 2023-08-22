@@ -8,6 +8,7 @@ import { AddFormComponent } from './pages/rubros/add-form/add-form.component';
 import { AddProductosComponent } from './pages/productos/add-form/add-form.component';
 import { ClientesFormComponent } from './pages/clientes/clientesform/clientesform.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { ListadoVentasComponent } from './pages/ventas/listado/listado.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesFormComponent},
   {path: 'clientes/:id', component: ClientesFormComponent},
   {path: 'ventas', component: VentasComponent},
+  {path: 'ventas/listado', component: ListadoVentasComponent},
 
 ];
 

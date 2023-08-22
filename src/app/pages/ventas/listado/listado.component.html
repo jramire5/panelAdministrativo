@@ -1,0 +1,23 @@
+<p>Lista de Ventas</p>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Monto Total</th>
+        <th scope="col">Cliente ID</th>
+        <th scope="col"></th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of ventas">
+        <th scope="row">{{venta.id}}</th>
+        <td>{{venta.fecha}}</td>
+        <td>{{venta.importe_total}}</td>
+        <td>{{venta.cliente_id}}</td>
+
+        <td><button class="btn btn-danger">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>

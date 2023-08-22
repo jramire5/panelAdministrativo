@@ -24,9 +24,7 @@ export class ClientesFormComponent implements OnInit{
     telefono:['']
   })
   onCreate(): void{
-    console.log('entered Clientes')
     const formValue = this.form.value;
-    console.log('formValue', formValue)
     const createData = {
       nombre: formValue.nombre as string,
       cuit: formValue.cuit as string,
@@ -36,7 +34,6 @@ export class ClientesFormComponent implements OnInit{
     }
     this.clientesService.create(createData).subscribe( (res) =>
     {
-    console.log('created', res)
     this.router.navigate([''])
   })
   }
@@ -48,7 +45,6 @@ export class ClientesFormComponent implements OnInit{
           this.editar = true;
           this.clientesService.getCliente(id).subscribe(
             (es) => {
-              console.log(this.form)
               this.form.patchValue({
                 nombre: es.data.nombre,
                 cuit: es.data.cuit,
@@ -56,8 +52,6 @@ export class ClientesFormComponent implements OnInit{
                 domicilio:es.data.domicilio,
                 telefono: es.data.telefono
               })
-              console.log(es.data)
-              console.log(this.form)
             }
           )
         }
@@ -69,15 +63,10 @@ export class ClientesFormComponent implements OnInit{
     this.activatedRoute.params.subscribe(
       e => {
         let id=e['id'];
-        console.log('id',id)
         if(id){
-    console.log('formValue', formValue)
-
     if(confirm('Confirme la Edicion')){
-
       this.clientesService.edit(formValue, id).subscribe( (res) =>
-      {this.clientesService.getClientes().subscribe(
-      )})
+      {this.router.navigate(['/productos'])})
     }
   }})
 }

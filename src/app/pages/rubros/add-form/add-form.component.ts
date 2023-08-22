@@ -30,8 +30,6 @@ ngOnInit(): void {
               this.addForm.patchValue({nombre: es.data.nombre,
                 codigo:es.data.codigo,
               })
-              console.log(es.data)
-              console.log('addform',this.addForm)
             }
           )
         }
@@ -40,16 +38,13 @@ ngOnInit(): void {
   }
 
   onCreate(): void{ActivatedRoute
-    console.log('entered')
     const formValue = this.addForm.value;
-    console.log('formValue', formValue)
       const createData = {
       nombre: formValue.nombre as string,
       codigo: formValue.codigo as string,
     };
     this.rubrosService.create(createData).subscribe( (res) =>
     {
-    console.log('created', res)
     this.router.navigate([''])
   })
   }
@@ -58,9 +53,7 @@ ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       e => {
         let id=e['id'];
-        console.log('id',id)
         if(id){
-    console.log('formValue', formValue)
     const editedData = {
       nombre: formValue.nombre as string,
       codigo: formValue.codigo as string,
@@ -68,8 +61,7 @@ ngOnInit(): void {
     if(confirm('Confirme la Edicion')){
 
       this.rubrosService.edit(editedData, id).subscribe( (res) =>
-      {this.rubrosService.getRubros().subscribe(
-      )})
+      {this.router.navigate(['/rubros'])})
     }
   }})
 }

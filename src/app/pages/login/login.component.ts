@@ -18,17 +18,13 @@ export class LoginComponent {
 
   }
   onLogin(): void{
-    console.log('entered')
     const formValue = this.loginForm.value;
-    console.log('formValue', formValue)
       const userData = {
       username: formValue.username as string,
       password: formValue.password as string,
     };
-    console.log('userdata', userData)
     this.loginService.login(userData).subscribe( (res) =>
     {
-    console.log('r e s')
     this.router.navigate([''])
   })
   }
