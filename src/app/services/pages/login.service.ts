@@ -17,7 +17,6 @@ export class LoginService {
     .post<UserResponse>(`${environment.api_URL}/login`,{'username': userName , 'password': pass})
     .pipe(
       map((res: UserResponse) => {
-        console.log('res', res);
         this.saveToken(res.ATO);
         this.saveUsername(userName);
       }),
