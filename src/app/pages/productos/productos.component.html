@@ -1,14 +1,13 @@
 <h3 class="text-center">Lista de Productos</h3>
 <div class="container">
   <input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Buscar por Nombre" (input)="updateSearchResults()">
-  <ul>
-    <button class="mx-1" (click)="pagina(1)">
-      1
-    </button>
-    <button (click)="pagina(2)">
-      2
-    </button>
-  </ul>
+  <div class="row">
+    <div class="d-flex">
+      <div *ngFor="let p of paginas; let i = index">
+        <button class="rounded mx-2 btn btn-secondary" (click)="pagina(i+1)">{{i+1}}</button>
+      </div>
+    </div>
+  </div>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>

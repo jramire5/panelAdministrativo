@@ -22,9 +22,11 @@ export class ProductosComponent implements OnInit {
   id: number = 0;
   productosEncontrados: Productos[] = []
   searchTerm: string = '';
+  paginas = [0]
   ngOnInit(): void {
     this.productosService.getProductos(1).subscribe((res) =>{
       this.productos = res.data;
+      this.paginas.length = res.pagination.totalPages
       this.activatedRoute.params.subscribe(
         e => {
           let id=e['id'];
