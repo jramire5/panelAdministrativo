@@ -60,7 +60,7 @@ export class ProductosComponent implements OnInit {
         })
       }
       ordenar(criterio: string):void {
-        this.productosService.orderProductos(criterio).subscribe((res) => {
+        this.dataService.orderBy(criterio, 'productos').subscribe((res) => {
         this.productos = res.data
       })}
     }

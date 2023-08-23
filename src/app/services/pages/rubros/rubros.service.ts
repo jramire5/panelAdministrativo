@@ -16,7 +16,6 @@ ato = localStorage.getItem('ATO') as string;
     const headers = new HttpHeaders({'Authorization':this.ato})
     return this.http.post<RubroResponse>(`${environment.api_URL}/rubros`, {nombre: rubrosData.nombre, codigo: rubrosData.codigo},{headers}).pipe(
       map((res: RubroResponse) => {
-        console.log('rubro', res)
       }),
       catchError((err) => this.handleError(err))
       )
@@ -25,7 +24,6 @@ ato = localStorage.getItem('ATO') as string;
       const headers = new HttpHeaders({'authorization':this.ato})
       return this.http.post<Rubros>(`${environment.api_URL}/rubros/eliminar`,{id: rubroID},{headers}).pipe(
         map((res: Rubros) => {
-          console.log('Rubro', res)
         }),
         catchError((err) => this.handleError(err))
         )
@@ -34,7 +32,6 @@ ato = localStorage.getItem('ATO') as string;
         const headers = new HttpHeaders({'authorization':this.ato})
         return this.http.post<Rubros>(`${environment.api_URL}/rubros/${rubroID}`, {id:rubroID, nombre: rubrosData.nombre, codigo: rubrosData.codigo},{headers}).pipe(
           map((res: Rubros) => {
-            console.log('Rubro', res)
           }),
           catchError((err) => this.handleError(err))
           )

@@ -1,4 +1,5 @@
-<p>Lista de Rubros</p>
+<h3 class="text-center">Lista de Rubros</h3>
+<div class="container">
 <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -13,9 +14,12 @@
       <tr *ngFor="let rubro of rubros">
         <th scope="row">{{rubro.nombre}}</th>
         <td>{{rubro.codigo}}</td>
-        <td><button class="btn btn-warning" type="button" name="button" [routerLink]="['/rubros/', rubro.id]">Seleccionar</button></td>
-
-        <td><button class="btn btn-danger" (click)="delete(rubro.id)">Eliminar</button></td>
+        <td  *ngIf="rubro.id != rubroID"><button class="btn btn-warning" type="button" name="button" (click)="seleccionar(rubro.id!)" [routerLink]="['/rubros/', rubro.id]">Seleccionar</button></td>
+        <td *ngIf="rubro.id == rubroID"><app-add-form ></app-add-form></td>
+        <td><button class="btn btn-danger" *ngIf="rubro.id == rubroID" (click)="delete(rubro.id)">Eliminar</button></td>
       </tr>
     </tbody>
   </table>
+    <app-add-form *ngIf="rubroID == 0"></app-add-form>
+    <button class="btn btn-warning" *ngIf="rubroID != 0" type="button" name="button" [routerLink]="['/rubros']">Quitar Seleccion</button>
+  </div>

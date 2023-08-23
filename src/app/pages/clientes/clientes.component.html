@@ -1,12 +1,14 @@
-<p>Lista de clientes</p>
+<h3 class="text-center">Lista de clientes</h3>
+<div class="container">
+  <input class="rounded my-4" type="text" [(ngModel)]="searchTerm" placeholder="Buscar por Nombre" (input)="updateSearchResults()">
 <table *ngIf="clientes.length > 0" class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cuit</th>
-        <th scope="col">Email</th>
-        <th scope="col">Domicilio</th>
-        <th scope="col">Telefono</th>
+        <th scope="col"><button class="btn btn-dark" (click)="ordenar('nombre')">Nombre</button></th>
+        <th scope="col"><button class="btn btn-dark" (click)="ordenar('cuit')">Cuit</button></th>
+        <th scope="col"><button class="btn btn-dark" (click)="ordenar('email')">Email</button></th>
+        <th scope="col"><button class="btn btn-dark" (click)="ordenar('domicilio')">Domicilio</button></th>
+        <th scope="col"><button class="btn btn-dark" (click)="ordenar('telefono')">Telefono </button></th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -17,9 +19,17 @@
         <td>{{cliente.email}}</td>
         <td>{{cliente.domicilio}}</td>
         <td>{{cliente.telefono}}</td>
-        <td><button class="btn btn-warning" [routerLink]="['/clientes/',cliente.id]">Seleccionar</button></td>
-        <td><button class="btn btn-danger" (click)="delete(cliente.id)">Eliminar</button></td>
+        <td  *ngIf="clienteID != cliente.id"><button class="btn btn-warning" (click)="seleccionar(cliente.id!)" [routerLink]="['/clientes/',cliente.id]">Seleccionar</button></td>
+        <td><app-clientesform *ngIf="clienteID == cliente.id"></app-clientesform>        </td>
+        <td><button class="btn btn-danger"  *ngIf="clienteID == cliente.id" (click)="delete(cliente.id)">Eliminar</button></td>
       </tr>
     </tbody>
   </table>
+  <div class="col-5 mx-auto d-flex align-items-center">
+    <app-clientesform *ngIf="clienteID == 0"></app-clientesform>
+  </div>
+  <div class="col-5 mx-auto d-flex align-items-center">
+    <button class="btn btn-warning" *ngIf="clienteID != 0" [routerLink]="'/clientes'">Quitar Seleccion</button>
+  </div>
+</div>
   <p *ngIf="clientes.length == 0">No hay clientes Disponibles</p>
